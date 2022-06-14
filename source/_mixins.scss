@@ -1,0 +1,31 @@
+%sectionPadding{
+  padding:var(--half-gap);
+}
+%flex{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--half-gap);
+  align-items:center;
+}
+%sectionArrange{
+  > *{
+    padding-top:var(--half-gap);
+  }
+  > .sectionHeader{
+    grid-column:1;
+    margin-top:0;
+  }
+  > :not(.sectionHeader){
+    grid-column:2;
+  }
+  > h3{
+    justify-self:end;
+    text-align:right;
+  }
+  &:not(:first-child){
+    > :is(.h2,h2),
+    > :is(.h2,h2) + :not(.sectionHeader){
+      border-top:5px solid black;
+    }
+  }
+}

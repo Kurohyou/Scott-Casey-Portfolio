@@ -1,0 +1,79 @@
+include _mixins.pug
+// Social media Icons from IconFinder.com under creative commons license https://www.iconfinder.com/search?q=discord&category=social-media&price=free&style=solid
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Aldrich&family=Exo+2:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet")
+    link(rel="stylesheet" href="assets/css/style.css")
+    title Scott Casey | Kurohyou Studios
+  body
+    header
+      h1 Scott Casey
+      h2 Digital Conversion Specialist
+    nav
+      ul
+        li
+          a(href="#about-header") About me
+        li
+          a(href="#project-header") Work
+        li
+          a(href="#contact-header") Contact Me!
+    .hero
+    main
+      section(aria-labelledby="about-header")
+        .sectionHeader.h2#about-header 
+          h2 Scott Casey
+          img.profile-pic(alt="Scott Casey and Koda" src="assets/images/profile.jpg")
+        div
+          p I got started in web development through converting tabletop RPGs to virtual tabletops. I have created products for some of the biggest names in the tabletop and VTT spaces including Roll20, Paizo, and Pinnacle Entertainment. I am passionate about bringing the fun of tabletop gaming to the virtual space so that everyone can play and socialize no matter the distance between them. Part of this passion includes making sure that the products I create are as accessible as possible so that anyone, regardless of ability, can enjoy a game night with friends and family.
+          p I am currently working on improving my skills to become a full stack developer through the #[a(href="https://bootcamps.continue.utah.edu/coding/?utm_source=university-course-page") University of Utah Full Stack Coding Bootcamp].
+        h3.sectionHeader Kurohyou Studios
+        div
+          p Kurohyou Studios was founded in 2020 as a way for me to organize my various projects on Roll20. The studio's #[a(href='https://www.patreon.com/kurohyoustudios?fan_landing=true') patreon page] is where my work on Roll20 character sheets and tools can be supported by the community. It's also where I post updates on my sheet creation tutorial and release notices for the various tools and frameworks that I have created.
+      section(aria-labelledby="project-header")
+        h2.sectionHeader#project-header Work
+        //- Add project elements here
+        .flex.flex-center.brick-mortar
+          each obj,index in cardContent
+            div(class=`project-container project-container--${obj.cardType}`)
+              a(href=obj.siteLink || obj.repositoryLink).card
+                img(alt=obj.imageAlt src=`assets/images/${obj.image}`)
+                h3 #{obj.Name}
+                - category = obj.Categories || [];
+                - languages = obj.Languages || [];
+                span.categories #{obj.Categories}
+                span.languages #{obj.Languages}
+      //- Descriptive Content will be displayed eventually
+        each obj,index in cardContent
+          .target-section(id=`section-${index}`)
+            h3.sectionHeader #{obj.Name}
+            each content in obj.content
+              p #{content}
+      section(aria-labelledby="contact-header")
+        h2.sectionHeader#contact-header Contact me
+        .flex.flex-space-evenly
+          span.flex
+            a(href="https://www.linkedin.com/in/scott-casey-20210398/")
+              img.social-icon(alt="linkedin" title="Linkedin" src="assets/images/linkedin-icon.svg")
+          span.flex
+            a(href="https://www.patreon.com/kurohyoustudios?fan_landing=true")
+              img.social-icon(alt="patreon" title="Patreon" src="assets/images/patreon-icon.svg")
+          span.flex
+            a.material-icons(title="Email" href="mailto:scaseydv@gmail.com?subject=Inquiring about your work") email
+          span.flex
+            a(href="https://discord.gg/vYmvFBZQsM")
+              img.social-icon(alt="Kurohyou Studios' Discord Server" title="Kurohyou Studios' Discord Server" src="assets/images/discord-icon.svg")
+          span.flex
+            a(href="https://twitter.com/Kurohyoustudios")
+              img.social-icon(alt="twitter" title="Twitter" src="assets/images/twitter-icon.svg")
+    //- Resume section WIP
+      section(aria-labelledby="resume-header")
+        h2.sectionHeader#resume-header Resume
+        div
+          p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum non eum cum nulla, veritatis nisi reprehenderit repellat, tempore obcaecati pariatur hic iste eligendi ipsa! Possimus voluptates doloribus deleniti atque similique laudantium voluptatibus, numquam unde perspiciatis fugiat aliquid dignissimos cupiditate, quod excepturi consequuntur id facere temporibus amet fugit assumenda dolor ut exercitationem? Rem neque mollitia corrupti consequuntur delectus ducimus ab, sit quisquam perferendis quibusdam quod reprehenderit velit reiciendis laboriosam quis dicta minima aut dolorem, eos accusantium enim blanditiis temporibus officiis explicabo? Mollitia voluptatibus dolorum eaque, voluptates natus alias, eos ratione delectus exercitationem corporis, laboriosam aspernatur libero optio id impedit nemo dolorem.
