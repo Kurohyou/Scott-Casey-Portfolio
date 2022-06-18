@@ -58,20 +58,7 @@ html(lang="en")
       section(aria-labelledby="contact-header")
         h2.sectionHeader#contact-header Contact me
         .flex.flex-space-evenly
-          span.flex
-            a(href="https://www.linkedin.com/in/scott-casey-20210398/")
-              img.social-icon(alt="linkedin" title="Linkedin" src="assets/images/linkedin-icon.svg")
-          span.flex
-            a(href="https://www.patreon.com/kurohyoustudios?fan_landing=true")
-              img.social-icon(alt="patreon" title="Patreon" src="assets/images/patreon-icon.svg")
-          span.flex
-            a.material-icons(title="Email" href="mailto:scaseydv@gmail.com?subject=Inquiring about your work") email
-          span.flex
-            a(href="https://discord.gg/vYmvFBZQsM")
-              img.social-icon(alt="Kurohyou Studios' Discord Server" title="Kurohyou Studios' Discord Server" src="assets/images/discord-icon.svg")
-          span.flex
-            a(href="https://twitter.com/Kurohyoustudios")
-              img.social-icon(alt="twitter" title="Twitter" src="assets/images/twitter-icon.svg")
+          +socialIcons
     //- Resume section WIP
       section(aria-labelledby="resume-header")
         h2.sectionHeader#resume-header Resume
