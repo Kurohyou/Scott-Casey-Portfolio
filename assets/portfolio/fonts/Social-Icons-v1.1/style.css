@@ -1,17 +1,18 @@
-/* Social icon font created at icomoon.io/app */
 @font-face {
   font-family: 'Social-Icons';
   src:
-    url('https://raw.githubusercontent.com/Kurohyou/Scott-Casey-Portfolio/main/assets/fonts/Social-Icons.ttf?ynbumv') format('truetype'),
-    url('https://raw.githubusercontent.com/Kurohyou/Scott-Casey-Portfolio/main/assets/fonts/Social-Icons.woff?ynbumv') format('woff'),
-    url('https://raw.githubusercontent.com/Kurohyou/Scott-Casey-Portfolio/main/assets/fonts/Social-Icons.svg?ynbumv#Social-Icons') format('svg');
+    url('fonts/Social-Icons.ttf?iwxyve') format('truetype'),
+    url('fonts/Social-Icons.woff?iwxyve') format('woff'),
+    url('fonts/Social-Icons.svg?iwxyve#Social-Icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-.social-icon {
-  font-family: 'Social-Icons', monospace;
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Social-Icons' !important;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -33,6 +34,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-GitHub-Icon:before {
+  content: "\e904";
+}
 .icon-discord-icon:before {
   content: "\e900";
 }

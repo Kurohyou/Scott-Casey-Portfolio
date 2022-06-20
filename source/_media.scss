@@ -1,23 +1,4 @@
-@media (min-width:1000px) {
-  .project-container--4{
-    width: 800px;
-  }
-}
-@media (max-width:1000px){
-  .project-container--4{
-    width: 600px;
-  }
-}
-@media (min-width:800px) {
-  .project-container--3{
-    width:600px;
-  }
-}
 @media(max-width:800px){
-  .project-container--4,
-  .project-container--3{
-    width:400px;
-  }
   header > nav > ul{
     justify-content:center;
   }

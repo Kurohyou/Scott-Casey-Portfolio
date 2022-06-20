@@ -1,15 +1,10 @@
 mixin socialIcons
-  span.flex
-    a(href="https://www.linkedin.com/in/scott-casey-20210398/")
-      img.social-icon(alt="linkedin" title="Linkedin" src="../images/linkedin-icon.svg")
-  span.flex
-    a(href="https://www.patreon.com/kurohyoustudios?fan_landing=true")
-      img.social-icon(alt="patreon" title="Patreon" src="../images/patreon-icon.svg")
-  span.flex
-    a.material-icons(title="Email" href="mailto:scaseydv@gmail.com?subject=Inquiring about your work") email
-  span.flex
-    a(href="https://discord.gg/vYmvFBZQsM")
-      img.social-icon(alt="Kurohyou Studios' Discord Server" title="Kurohyou Studios' Discord Server" src="../images/discord-icon.svg")
-  span.flex
-    a(href="https://twitter.com/Kurohyoustudios")
-      img.social-icon(alt="twitter" title="Twitter" src="../images/twitter-icon.svg")
+  a(href="https://discord.gg/vYmvFBZQsM").social-icon discord
+  a(href="https://www.linkedin.com/in/scott-casey-20210398/").social-icon linkedin
+  a(href="https://www.patreon.com/kurohyoustudios?fan_landing=true").social-icon patreon
+  .flex.flex-column
+    span(style="justify-self:center;") Scott Casey | Kurohyou Studios
+    span(style="justify-self:center;") #{siteDate}
+  a.material-icons(title="Email" href="mailto:scaseydv@gmail.com?subject=Inquiring about your work") email
+  a(href="https://github.com/Kurohyou").social-icon github
+  a(href="https://twitter.com/Kurohyoustudios").social-icon twitter
