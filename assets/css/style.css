@@ -180,7 +180,7 @@ footer * {
 .brick-mortar {
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   grid-auto-rows: 200px;
   gap: var(--half-gap);
   grid-auto-flow: dense;
@@ -286,5 +286,11 @@ footer * {
   main > section > h3 {
     text-align: left;
     margin: 0;
+  }
+}
+@media (max-width: 600px) {
+  .card--2 {
+    -ms-grid-column-span: 1;
+    grid-column: span 1;
   }
 }

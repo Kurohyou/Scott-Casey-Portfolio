@@ -10,3 +10,8 @@
     margin:0;
   }
 }
+@media(max-width:600px){
+  .card--2{
+    grid-column:span 1;
+  }
+}
