@@ -220,7 +220,6 @@ footer * {
   --textBackColor:hsla(188, 100%, 15%,1);
   -webkit-transform: scale(1.02);
           transform: scale(1.02);
-  z-index: 10;
 }
 .card > h3 {
   margin: 0;
@@ -264,6 +263,7 @@ footer * {
 }
 .shadow-container:hover {
   --dropShadow: drop-shadow(rgba(0, 0, 0, 0.19) 0px 10px 20px) drop-shadow(rgba(0, 0, 0, 0.23) 0px 6px 6px);
+  z-index: 10;
 }
 
 .card--2 {
