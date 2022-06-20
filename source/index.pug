@@ -42,13 +42,14 @@ html(lang="en")
         //- Add project elements here
         .brick-mortar
           each obj,index in cardContent
-            a(class=`card--${obj.cardType}` href=obj.siteLink || obj.repositoryLink).card
-              img(alt=obj.imageAlt src=`assets/images/${obj.image}`)
-              h3 #{obj.Name}
-              - category = obj.Categories || [];
-              - languages = obj.Languages || [];
-              span.categories #{obj.Categories}
-              span.languages #{obj.Languages}
+            div(class=`card--${obj.cardType}`).shadow-container
+              a(href=obj.siteLink || obj.repositoryLink).card
+                img(alt=obj.imageAlt src=`assets/images/${obj.image}`)
+                h3 #{obj.Name}
+                - category = obj.Categories || [];
+                - languages = obj.Languages || [];
+                span.categories #{obj.Categories}
+                span.languages #{obj.Languages}
       //- Descriptive Content will be displayed eventually
         each obj,index in cardContent
           .target-section(id=`section-${index}`)

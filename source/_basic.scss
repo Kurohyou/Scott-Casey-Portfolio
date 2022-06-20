@@ -122,9 +122,10 @@ footer{
   grid-auto-flow: dense;
 }
 .card{
+  --notchSize:var(--gap);
   --textBackColor:hsla(188, 100%, 15%,0.6);
-  --borderWidth:2px;
   cursor: pointer;
+  clip-path: polygon(0 var(--notchSize),var(--notchSize) 0,calc(100% - var(--notchSize)) 0, 100% var(--notchSize),100% calc(100% - var(--notchSize)),calc(100% - var(--notchSize)) 100%,var(--notchSize) 100%, 0 calc(100% - var(--notchSize)));
   overflow:hidden;
   width:100%;
   height:100%;display:grid;
@@ -132,26 +133,23 @@ footer{
   align-items:start;
   position:relative;
   padding:0;
-  border:var(--borderWidth) solid hsla(240, 100%, 50%,1);
   background-color:transparent;
   overflow:hidden;
   background-color: black;
   /*Box shadow #27 from https://getcssscan.com/css-box-shadow-examples*/
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   transition:{
-    property:box-shadow, transform;
+    property:filter, transform;
     duration:500ms;
   };
   text-decoration:none;
   &:hover{
     --textBackColor:hsla(188, 100%, 15%,1);
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     transform:scale(1.02);
     z-index:10;
   }
   > h3{
     margin:0;
-    padding: var(--half-gap) var(--tiny-gap) var(--tiny-gap);
+    padding: var(--half-gap) var(--notchSize) var(--tiny-gap) var(--notchSize);
     background-color:var(--textBackColor);
     color:white;
     z-index:1;
@@ -163,13 +161,27 @@ footer{
     width:100%;
   }
   > span{
-    padding:var(--tiny-gap);
+    padding:var(--tiny-gap) var(--notchSize);
     background-color:var(--textBackColor);
     color:white;
     font-weight:bold;
     z-index:1;
     transition:background-color 500ms;
     justify-self:start;
+  }
+}
+.shadow-container{
+  --borderWidth:2px;
+  --borderShadow:drop-shadow(var(--borderWidth) 0 var(--hfBackground)) drop-shadow(calc(var(--borderWidth) * -1) 0 var(--hfBackground)) drop-shadow(0 var(--borderWidth) var(--hfBackground)) drop-shadow(0 calc(var(--borderWidth) * -1) var(--hfBackground));
+  --dropShadow:drop-shadow(rgba(0, 0, 0, 0.12) 0px 1px 3px) drop-shadow(rgba(0, 0, 0, 0.24) 0px 1px);
+  filter: var(--borderShadow) var(--dropShadow);
+  transition: {
+    property:filter;
+    duration:500ms;
+  };
+  will-change: filter;
+  &:hover{
+    --dropShadow: drop-shadow(rgba(0, 0, 0, 0.19) 0px 10px 20px) drop-shadow(rgba(0, 0, 0, 0.23) 0px 6px 6px);
   }
 }
 .card--2{
