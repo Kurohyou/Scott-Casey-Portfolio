@@ -37,6 +37,14 @@ main > section:not(:first-child) > :is(.h2, h2) + :not(.sectionHeader),
   border-top: 5px solid black;
 }
 
+.shadow-container:hover, .project-div:target > .shadow-container {
+  --dropShadow: drop-shadow(rgba(0, 0, 0, 0.19) 0px 10px 20px) drop-shadow(rgba(0, 0, 0, 0.23) 0px 6px 6px);
+  z-index: 10;
+  --textBackColor:hsla(188, 100%, 15%,1);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
 :root {
   --baseCardSize:200px;
   --gap:1rem;
@@ -178,17 +186,15 @@ footer * {
 }
 
 .brick-mortar {
+  --brickCol: minmax(min(200px,100%),1fr);
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-  grid-auto-rows: 200px;
+  grid-template-columns: repeat(auto-fit, var(--brickCol));
   gap: var(--half-gap);
   grid-auto-flow: dense;
 }
 
 .card {
-  --notchSize:var(--gap);
-  --textBackColor:hsla(188, 100%, 15%,0.6);
   cursor: pointer;
   -webkit-clip-path: polygon(0 var(--notchSize), var(--notchSize) 0, calc(100% - var(--notchSize)) 0, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0 calc(100% - var(--notchSize)));
           clip-path: polygon(0 var(--notchSize), var(--notchSize) 0, calc(100% - var(--notchSize)) 0, 100% var(--notchSize), 100% calc(100% - var(--notchSize)), calc(100% - var(--notchSize)) 100%, var(--notchSize) 100%, 0 calc(100% - var(--notchSize)));
@@ -208,18 +214,7 @@ footer * {
   overflow: hidden;
   background-color: black;
   /*Box shadow #27 from https://getcssscan.com/css-box-shadow-examples*/
-  -webkit-transition-property: -webkit-filter, -webkit-transform;
-  transition-property: -webkit-filter, -webkit-transform;
-  transition-property: filter, transform;
-  transition-property: filter, transform, -webkit-filter, -webkit-transform;
-  -webkit-transition-duration: 500ms;
-          transition-duration: 500ms;
   text-decoration: none;
-}
-.card:hover {
-  --textBackColor:hsla(188, 100%, 15%,1);
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
 }
 .card > h3 {
   margin: 0;
@@ -248,22 +243,53 @@ footer * {
 }
 
 .shadow-container {
+  --notchSize:var(--gap);
   --borderWidth:2px;
   --borderShadow:drop-shadow(var(--borderWidth) 0 var(--hfBackground)) drop-shadow(calc(var(--borderWidth) * -1) 0 var(--hfBackground)) drop-shadow(0 var(--borderWidth) var(--hfBackground)) drop-shadow(0 calc(var(--borderWidth) * -1) var(--hfBackground));
   --dropShadow:drop-shadow(rgba(0, 0, 0, 0.12) 0px 1px 3px) drop-shadow(rgba(0, 0, 0, 0.24) 0px 1px);
+  --textBackColor:hsla(188, 100%, 15%,0.6);
   -webkit-filter: var(--borderShadow) var(--dropShadow);
           filter: var(--borderShadow) var(--dropShadow);
-  -webkit-transition-property: -webkit-filter;
-  transition-property: -webkit-filter;
-  transition-property: filter;
-  transition-property: filter, -webkit-filter;
+  border: var(--borderWidth) solid transparent;
+  -webkit-transition-property: -webkit-filter, -webkit-transform;
+  transition-property: -webkit-filter, -webkit-transform;
+  transition-property: filter, transform;
+  transition-property: filter, transform, -webkit-filter, -webkit-transform;
   -webkit-transition-duration: 500ms;
           transition-duration: 500ms;
+  height: 200px;
   will-change: filter;
 }
-.shadow-container:hover {
-  --dropShadow: drop-shadow(rgba(0, 0, 0, 0.19) 0px 10px 20px) drop-shadow(rgba(0, 0, 0, 0.23) 0px 6px 6px);
-  z-index: 10;
+.project-div {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.project-div:not(:target) > :not(.shadow-container) {
+  display: none;
+}
+.project-div:target {
+  grid-column: 1/-1;
+  grid-template-columns: repeat(auto-fill, var(--brickCol));
+  row-gap: var(--half-gap);
+  background-color: lightgrey;
+  border-radius: var(--gap);
+  padding: 0 var(--half-gap) var(--half-gap) var(--half-gap);
+}
+.project-div:target > :not(.shadow-container) {
+  grid-column: 1/-1;
+}
+
+.linkDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: var(--half-gap);
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .card--normal {
@@ -271,7 +297,7 @@ footer * {
   grid-column: span 2;
 }
 
-.card-large {
+.card--large {
   -ms-grid-column-span: 3;
   grid-column: span 3;
 }
@@ -292,7 +318,7 @@ footer * {
   text-decoration: none;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 803px) {
   header > nav > ul {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -307,9 +333,23 @@ footer * {
     text-align: left;
     margin: 0;
   }
+
+  main > section:not(:first-child) > :is(.h2, h2) {
+    border-top: 0;
+  }
+
+  .card--large {
+    -ms-grid-column-span: 2;
+    grid-column: span 2;
+  }
 }
 @media (max-width: 600px) {
-  .card--2 {
+  .brick-mortar {
+    --brickCol: 1fr;
+  }
+
+  .card--large,
+.card--normal {
     -ms-grid-column-span: 1;
     grid-column: span 1;
   }

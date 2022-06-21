@@ -1,4 +1,4 @@
-@media(max-width:800px){
+@media(max-width:803px){
   header > nav > ul{
     justify-content:center;
   }
@@ -9,9 +9,19 @@
     text-align:left;
     margin:0;
   }
+  main > section:not(:first-child) > :is(.h2, h2){
+    border-top:0;
+  }
+  .card--large{
+    grid-column:span 2;
+  }
 }
 @media(max-width:600px){
-  .card--2{
+  .brick-mortar{
+    --brickCol: 1fr;
+  }
+  .card--large,
+  .card--normal{
     grid-column:span 1;
   }
 }

@@ -115,15 +115,13 @@ footer{
   flex-direction: column;
 }
 .brick-mortar{
+  --brickCol: minmax(min(200px,100%),1fr);
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));
-  grid-auto-rows:200px;
+  grid-template-columns:repeat(auto-fit,var(--brickCol));
   gap:var(--half-gap);
   grid-auto-flow: dense;
 }
 .card{
-  --notchSize:var(--gap);
-  --textBackColor:hsla(188, 100%, 15%,0.6);
   cursor: pointer;
   clip-path: polygon(0 var(--notchSize),var(--notchSize) 0,calc(100% - var(--notchSize)) 0, 100% var(--notchSize),100% calc(100% - var(--notchSize)),calc(100% - var(--notchSize)) 100%,var(--notchSize) 100%, 0 calc(100% - var(--notchSize)));
   overflow:hidden;
@@ -137,15 +135,7 @@ footer{
   overflow:hidden;
   background-color: black;
   /*Box shadow #27 from https://getcssscan.com/css-box-shadow-examples*/
-  transition:{
-    property:filter, transform;
-    duration:500ms;
-  };
   text-decoration:none;
-  &:hover{
-    --textBackColor:hsla(188, 100%, 15%,1);
-    transform:scale(1.02);
-  }
   > h3{
     margin:0;
     padding: var(--half-gap) var(--notchSize) var(--tiny-gap) var(--notchSize);
@@ -170,24 +160,54 @@ footer{
   }
 }
 .shadow-container{
+  --notchSize:var(--gap);
   --borderWidth:2px;
   --borderShadow:drop-shadow(var(--borderWidth) 0 var(--hfBackground)) drop-shadow(calc(var(--borderWidth) * -1) 0 var(--hfBackground)) drop-shadow(0 var(--borderWidth) var(--hfBackground)) drop-shadow(0 calc(var(--borderWidth) * -1) var(--hfBackground));
   --dropShadow:drop-shadow(rgba(0, 0, 0, 0.12) 0px 1px 3px) drop-shadow(rgba(0, 0, 0, 0.24) 0px 1px);
+  --textBackColor:hsla(188, 100%, 15%,0.6);
   filter: var(--borderShadow) var(--dropShadow);
+  border: var(--borderWidth) solid transparent;
   transition: {
-    property:filter;
+    property:filter, transform;
     duration:500ms;
   };
+  height:200px;
   will-change: filter;
   &:hover{
-    --dropShadow: drop-shadow(rgba(0, 0, 0, 0.19) 0px 10px 20px) drop-shadow(rgba(0, 0, 0, 0.23) 0px 6px 6px);
-    z-index:10;
+    @extend %shadowHover;
   }
+}
+.project-div{
+  display:grid;
+  box-sizing:border-box;
+  &:not(:target) > :not(.shadow-container){
+    display:none;
+  }
+  &:target{
+    grid-column:1 / -1;
+    grid-template-columns: repeat(auto-fill,var(--brickCol));
+    row-gap:var(--half-gap);
+    background-color:lightgrey;
+    border-radius: var(--gap);
+    padding: 0 var(--half-gap) var(--half-gap) var(--half-gap);
+    > .shadow-container{
+      @extend %shadowHover;
+    }
+    > :not(.shadow-container){
+      grid-column:1 / -1;
+    }
+  }
+}
+.linkDiv{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--half-gap);
+  justify-content:space-around;
 }
 .card--normal{
   grid-column:span 2;
 }
-.card-large{
+.card--large{
   grid-column:span 3;
 }
 .target-section{

@@ -40,16 +40,7 @@ html(lang="en")
       section(aria-labelledby="project-header")
         h2.sectionHeader#project-header Work
         //- Add project elements here
-        .brick-mortar
-          each obj,index in cardContent
-            div(class=`card--${obj.cardType}`).shadow-container
-              a(href=obj.siteLink || obj.repositoryLink).card
-                img(alt=obj.imageAlt src=`assets/images/${obj.image}`)
-                h3 #{obj.Name}
-                - category = obj.Categories || [];
-                - languages = obj.Languages || [];
-                span.categories #{obj.Categories}
-                span.languages #{obj.Languages}
+        .brick-mortar#projects
       //- Descriptive Content will be displayed eventually
         each obj,index in cardContent
           .target-section(id=`section-${index}`)
@@ -58,6 +49,9 @@ html(lang="en")
               p #{content}
     footer(aria-label="Contact Me")#contact-header.flex.flex-space-evenly
       +socialIcons
+    script(type="text/javascript") const siteVersion = #{siteVersion};
+    script(src="/assets/javascript/papaparse.min.js")
+    script(src="/assets/javascript/index.js")
     //- Resume section WIP
       section(aria-labelledby="resume-header")
         h2.sectionHeader#resume-header Resume
